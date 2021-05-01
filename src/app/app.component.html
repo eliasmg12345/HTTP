@@ -1,0 +1,44 @@
+
+<!--A1    2. Petición HTTP de tipo GET
+     utilizaremos de ejemplo la pagina https://jsonplaceholder.typicode.com/guide/
+    tiene peticiones de recursos falsas que podemos utilizar para este tipo de pruebas 
+    nos va servir para montar el servicio para recuperar estos datos...se ve que estosç
+    datos nos van a devlover POSTS como si fuera un blog ç
+    lo primero es crearme un servicio donde voy a hacer estas peticiones
+    en la terminal gfeneramos un servicio  ng generate service services/Posts --skipTests
+    como no tenemos servidor http lo primero que tenemos que hacer es agregar al modulo 
+    principal de nuestra aplicacion la libreria de angular que nos permite hacer estas peticiones
+    en => app.module.ts A2 
+    Luego puedo ir al servicio y tenemos quye importar el httpclient es como la herramienta es como el servicio que utilizamos para realmente hacer las peticiones....
+    Una cosa es el modulo que trae todas las herramientas y otra httpclient que trae una 
+    unica herramienta => posts.service.ts A3
+-->
+
+
+<!--
+    B4 visualizando    
+-->
+
+<div class="posts">
+    <!--C3 haciendolo cliclable..pasandolo el id del post => app.ts C4-->
+    <div class="post" *ngFor="let post of arrPosts" (click)="onClick(post.id)"> 
+        <h4>{{post.title}}</h4>
+        <p>{{post.body}}</p>
+        <p>{{post.userId}}</p>
+    </div>
+</div>
+
+
+<!-- C1 2. Petición de tipo GET II (getById)
+VAMOS a hacer que cuando pulsemos a alguna de las cajas del html haga la peticion solo para devolvernos los datos del post
+coincreto que estamos pulsando
+primero crearemos en el servicio el metodo que me permita hacerlo => postsservice.ts C2-->
+
+<!--D1 4. Petición HTTTP de tipo POST
+LO PRIMERO que tenemos que tener en cuenta es como el servidor va recibir este tipo de peticiones sobre todo que datos
+necesita 
+vamops a crear un metodo en el servicio => posts.service.ts D2-->
+<!--D3 HJACIENDO LA Peticion luego en el =app.ts D4 -->
+<div>
+    <button (click)="onClickPost() ">Peticion POST</button>
+</div>
