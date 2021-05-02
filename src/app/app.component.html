@@ -42,3 +42,27 @@ vamops a crear un metodo en el servicio => posts.service.ts D2-->
 <div>
     <button (click)="onClickPost() ">Peticion POST</button>
 </div>
+
+
+
+<!--
+    E1  5. peticion HTTP de tipo Post por formulario 
+-->
+<!--E4-->
+<div class="container">
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>Titulo</label>
+            <input type="text" class="form-control" formControlName="title">
+        </div >
+        <div  class="form-group">
+            <label>Body</label>
+            <input type="text"  class="form-control" formControlName="body">
+        </div>
+        <div class="form-group">
+            <label>User Id</label>
+            <input type="text" class="form-control" formControlName="userId">
+        </div>
+        <input type="submit" class="btn btn-primary" value="Enviar">
+    </form>
+</div>

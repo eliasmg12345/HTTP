@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { PostsService } from './services/posts.service';
 
 @Component({
@@ -10,10 +11,18 @@ export class AppComponent {
 
   //B3 para visualizar ..luego 
   arrPosts:any[];
+  //E2
+  formulario:FormGroup;
 
   /*B1 el primer paso para consumir el servicio es inyectarlo */
   constructor(private postsService:PostsService){
 
+    //E3
+    this.formulario=new FormGroup({
+      title:new FormControl(''),
+      body:new FormControl(''),
+      userId:new FormControl('')
+    });
   }
 
   /* B2 en el ngOnInit cuando yo arranque este componente ...puedo hacer la carga de estos datos
@@ -44,7 +53,16 @@ export class AppComponent {
       title:'nuevo titulo',
       body:'este es el cuerpo',
       userId:1
-    }).then(response=>console.log(response))
+    }).then(response=>console.log(response)) 
       .catch(error=>console.log(error));
+  }
+  //E5
+  async onSubmit(){
+    try{
+      const reponse=await this.postsService.create(this.formulario.value); 
+      console.log(reponse);
+    }catch(error){
+      console.log(error);
+    }
   }
 }
