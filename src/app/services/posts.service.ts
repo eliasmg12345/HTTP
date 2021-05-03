@@ -67,4 +67,19 @@ export class PostsService {
       return this.httpClient.post<any>(this.baseUrl,bodyRequest).toPromise();
 
     }
+    /*F2 a diferencia del post en este incluye el id ya que no voy a crear sino editar
+    como la devolucion es comun y corriente por lo tanto nuestro metodo devolvera una
+    promesa la cual resuelve  a un objeto indefinido  en => html F3*/
+    update({id,title,body,userId}):Promise<any>{
+      return this.httpClient.put(`${this.baseUrl}/${id}`,{id,title,body,userId}).toPromise();
+    }
+
+    /* G2 creando un  nuevo metodo  le voy a decir que id voy a borrar y simplemente
+    este metodo devuelve una promesa...vemos en la pagina especificamente no me dice
+    que cosa nos devuelve por lo tanto ponemos de tipo any ...creando un nuevo boton 
+    en => html G3*/
+    delete(pId):Promise<any>{
+      return this.httpClient.delete(`${this.baseUrl}/${pId}`).toPromise();
+    }
+    
 }

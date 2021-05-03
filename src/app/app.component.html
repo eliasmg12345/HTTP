@@ -66,3 +66,21 @@ vamops a crear un metodo en el servicio => posts.service.ts D2-->
         <input type="submit" class="btn btn-primary" value="Enviar">
     </form>
 </div>
+
+<!-- F1  6. Petición HTTP PUT y DELETE 
+Hasta ahora estamos modificando un servidor restAPI
+si nos fijamos en la pagina....en Update a resource tenemos dos opciones
+PUT en el cual tenemos que pasarle todo el objeto nuevo
+PATCH en ell cual en la url metemos cual id es lo que vamos a editar y abajo solo
+le pasamos el campo que vamos a modificar 
+1 empezamos con el PUT => posts.service.ts F2-->
+
+<!-- F3 CRANDO EL BOTOn luego al ts => app.ts F4-->
+<h5>peticion PUT</h5>
+<button (click)="onClickUpdate()">Actualizar post</button>
+
+<!-- G1 haciendo el DELETE
+Para el delete creamos un  nuevo servicio nos vamos al => posts.service.ts  G2-->
+<!-- G3 luego en el => ts G4-->
+<h5>Delete</h5>
+<button (click)="onClickDelete()">Borrar Post</button>

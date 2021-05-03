@@ -65,4 +65,25 @@ export class AppComponent {
       console.log(error);
     }
   }
+
+  /*F4 CFREANDO el metodo ...no olvidar que todo el cuerpor es una promesa*/
+  onClickUpdate(){
+    this.postsService.update({
+      id:5,
+      title:'Nuevo titulo',
+      body:'nuevo cuerpo para el post',
+      userId:3
+    }).then(response=>console.log(response))
+      .catch(error=>console.log(error));
+  }
+
+  /*G4 con asyn await jaaja*/
+  async onClickDelete(){
+    try{
+      const response= await this.postsService.delete(5);
+      console.log(response);
+    }catch(error){
+      console.log(error);
+    }
+  }
 }
