@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 //A3-
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 
 @Injectable({
@@ -64,7 +64,20 @@ export class PostsService {
      ________dentro del html pondremos un boton para hacer ese tipo de peticion =>html D3*/
     create({title,body,userId}):Promise<any>{
       const bodyRequest={title,body,userId}
-      return this.httpClient.post<any>(this.baseUrl,bodyRequest).toPromise();
+      /*H2 lo que vamos  hacer es generar un objeto  para tener mas controlado..necesitamos
+      una propiedad headers y dentro de esta voy a generar un tipo httpHeaders que se tiene que importar
+      y aqui simplemente vamos a crear las cabeceras que necesitemos ...creamos un objeto en 
+      el que la clave va a ser en este caso el nombre de la cabecera  'Content-Type' y el valor
+      va a ser lo que esta en el servidor  'aplication/json; charse=UTF-8'
+      _____lo ultimo es coger toda esta cabecera y meter como una peticion al .post H3
+      */
+      const httpOptions={
+        headers:new HttpHeaders({
+          'Content-type': 'application/json; charset=UTF-8'
+        })
+      }
+      // H3
+      return this.httpClient.post<any>(this.baseUrl,bodyRequest,httpOptions).toPromise();
 
     }
     /*F2 a diferencia del post en este incluye el id ya que no voy a crear sino editar
